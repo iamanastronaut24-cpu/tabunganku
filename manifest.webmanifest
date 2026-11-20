@@ -1,11 +1,11 @@
 {
-  "name": "Tabunganku - Personal Savings",
+  "name": "TABUNGANKU - Personal Savings",
   "short_name": "Tabunganku",
-  "description": "Aplikasi pengelolaan berbagai tujuan tabungan pribadi.",
-  "start_url": "./index.html",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f4f6f8",
   "theme_color": "#17232e",
+  "description": "Aplikasi pengelolaan tabungan pribadi.",
   "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
 }
