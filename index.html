@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tabunganku | Personal Savings</title>
+<title>TABUNGANKU v2.2 | Personal Savings</title>
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="theme-color" content="#17232e"><link rel="icon" href="favicon.png" type="image/png">
 <style>
 :root{--ink:#17212b;--muted:#718096;--line:#e8edf1;--bg:#f4f6f8;--green:#239b69;--green2:#dff4e9;--card:#fff;--shadow:0 12px 35px #1c2b3a0b}
@@ -22,6 +22,78 @@ main{padding:34px clamp(20px,4vw,58px);max-width:1500px;width:100%;margin:auto}.
 .mobile-nav{display:none}.app-mark{width:34px;height:34px;border-radius:11px;object-fit:cover;vertical-align:middle}.goal-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.mini-action{background:#f2f6f4;color:#315b47;border:1px solid #e2ece6;border-radius:9px;padding:7px 9px;font-size:11px;font-weight:700}.mini-action.danger{color:#a44843;background:#fff5f4;border-color:#f4dfdd}.mini-action:focus-visible,button:focus-visible{outline:3px solid #75cda0;outline-offset:2px}.about-note{font-size:11px;color:#87918d;text-align:center;padding:20px 0 8px}
 @media(max-width:850px){.app{grid-template-columns:1fr}.sidebar{display:none}main{padding:22px 16px 90px}.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.stats .stat:last-child{grid-column:span 2}.goals{grid-template-columns:1fr}.table-row{grid-template-columns:1.3fr 1fr 70px}.table-row>*:nth-child(3){display:none}.table-row.head>*:nth-child(3){display:none}.mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);justify-content:space-around;padding:10px 4px calc(10px + env(safe-area-inset-bottom));z-index:5}.mobile-nav button{background:none;color:#78838d;font-size:10px;display:grid;gap:3px;justify-items:center;min-width:58px;padding:5px 8px;border-radius:12px}.mobile-nav button.active{color:var(--green);font-weight:800}.mobile-nav b{font-size:18px}.top h1{font-size:23px}}
 @media(max-width:430px){.hero{padding:22px}.hero-actions{flex-wrap:wrap}.stats{gap:8px}.stat{padding:14px}.stat strong{font-size:18px}.toolbar{align-items:flex-start}.table-row{padding:13px 10px;gap:7px}.table-row.head{padding:11px 10px}}
+
+/* TABUNGANKU v2.2 visual refresh */
+:root{--ink:#151a18;--muted:#7c8580;--line:#e8ece7;--bg:#f5f7f2;--green:#a8dc45;--green2:#edf7d9;--card:#fff;--shadow:0 16px 42px rgba(20,30,20,.055)}
+body{background:radial-gradient(ellipse at 85% -10%,#edf6dc 0,transparent 34%),var(--bg);color:var(--ink);letter-spacing:-.01em}
+.sidebar{background:#111715;color:#f8fbf4;border:0;padding:30px 18px;gap:34px}
+.sidebar .brand{color:#fff}.sidebar .app-mark{box-shadow:0 0 0 1px #ffffff24}
+.sidebar .nav button{color:#aeb8b1;transition:background .2s,color .2s,transform .2s}
+.sidebar .nav button.active,.sidebar .nav button:hover{background:#26332b;color:#c4f078}
+.sidebar .side-note{background:#1b2520;color:#aeb8b1}.sidebar .side-note b{color:#eaf5dc}
+main{padding-top:38px}
+.top{margin-bottom:30px}.top h1{font-size:clamp(25px,3vw,32px);font-weight:800;letter-spacing:-1.2px}
+.avatar{border:1px solid #dce5d8;background:#eaf3df;color:#253322;transition:transform .2s,background .2s}
+.avatar:hover{background:#c9ed8a;transform:translateY(-2px)}
+.hero{border-radius:27px;background:linear-gradient(130deg,#101715 0%,#202b25 65%,#303d32 100%);padding:30px;min-height:225px;box-shadow:0 20px 45px #111b1526}
+.hero:after{width:290px;height:290px;right:-65px;top:-120px;border-color:#d5f5a31c;box-shadow:0 0 0 32px #d5f5a30a,0 0 0 68px #d5f5a307}
+.hero .eyebrow{color:#b6c3b8;letter-spacing:.09em;font-size:11px;font-weight:700}
+.balance{font-size:clamp(36px,4vw,48px);letter-spacing:-2px}
+.growth{color:#c5f47c;font-weight:600}
+.btn{border-radius:13px;transition:transform .18s,filter .18s,background .18s}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}
+.btn.primary{background:linear-gradient(135deg,#b9ed62,#91c936);color:#172014;box-shadow:0 7px 18px #a6d94a2b}
+.btn.soft{background:#edf2e8;color:#33432d}
+.btn.ghost{background:#ffffff12;border-color:#ffffff30;color:#f5f8f1}
+.stat,.panel,.goal{border-color:#e9eee6;border-radius:22px;box-shadow:0 12px 34px rgba(28,40,25,.045)}
+.stat{padding:20px}.stat small{font-weight:600;letter-spacing:.01em}.stat strong{font-size:clamp(18px,2vw,23px)}
+.section-head{margin-top:32px}.section-head h2{font-size:19px;letter-spacing:-.45px}
+.link{color:#548a1e}.goal{padding:20px;transition:transform .2s,box-shadow .2s}.goal:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(28,40,25,.08)}
+.goal-icon{background:#f0f6e7}.percent{color:#5b921d}
+.bar{background:#edf1e9}.bar i{background:linear-gradient(90deg,#c2ef72,#78b52c)}
+.chip{border-color:#e5eae1;background:#fff}.chip.active{background:#18211c;color:#d1f28e;border-color:#18211c}
+.table{border-radius:20px}.table-row.head{background:#f7f9f4}
+.mobile-nav{border-top:1px solid #e6ebe2;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 -8px 28px #18211c0a}
+.mobile-nav button.active{color:#568d1e}.mobile-nav button{font-weight:600}
+.modal{border-radius:24px}.field input:focus,.field select:focus{border-color:#9acb4a;box-shadow:0 0 0 3px #b6e56c30}
+.about-page{max-width:860px;margin:0 auto}
+.about-shell{display:grid;gap:18px}
+.about-hero{position:relative;overflow:hidden;padding:32px;border-radius:28px;background:linear-gradient(135deg,#121a16,#27352b);color:#fff;box-shadow:0 20px 45px #111b1520}
+.about-hero:after{content:"";position:absolute;width:270px;height:270px;border:1px solid #d6f6a31c;border-radius:50%;right:-80px;top:-140px;box-shadow:0 0 0 35px #d6f6a30a,0 0 0 70px #d6f6a306}
+.about-logo{width:64px;height:64px;padding:7px;border-radius:19px;background:#fff;box-shadow:0 8px 24px #0002;margin-bottom:26px}
+.about-logo img{width:100%;height:100%;object-fit:contain;border-radius:13px}
+.about-kicker,.creator-label{display:block;font-size:10px;font-weight:800;letter-spacing:.16em;color:#c3e98b}
+.about-hero h2{font-size:clamp(27px,4vw,38px);letter-spacing:-1.2px;margin:9px 0}
+.about-hero p{max-width:560px;color:#c2cdc3;line-height:1.7;font-size:14px;margin:0 0 22px}
+.version-pill{display:inline-flex;padding:7px 11px;border-radius:30px;background:#c4ee7a;color:#1c2817;font-size:10px;font-weight:900;letter-spacing:.1em}
+.about-details{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.about-detail{display:flex;gap:12px;align-items:flex-start;padding:18px 15px;background:#fff;border:1px solid var(--line);border-radius:18px}
+.about-detail-icon{width:34px;height:34px;flex:0 0 34px;border-radius:11px;background:#eff7e2;color:#5a8e20;display:grid;place-items:center;font-weight:900}
+.about-detail b{display:block;font-size:13px;margin:1px 0 5px}.about-detail small{display:block;color:var(--muted);font-size:11px;line-height:1.5}
+.creator-card{padding:25px;border:1px solid #e6ebdf;border-radius:22px;background:linear-gradient(135deg,#fff,#f7faef);text-align:center}
+.creator-label{color:#6b982d}.creator-card h3{font-size:25px;letter-spacing:-.8px;margin:9px 0 4px}.creator-card p{font-size:12px;color:var(--muted);margin:0}
+.creator-divider{height:1px;background:#e5ebdc;margin:19px auto;max-width:220px}
+.creator-app{font-size:12px;font-weight:900;letter-spacing:.13em}.creator-app b{color:#699b27}
+.creator-tagline{display:block;color:var(--muted);font-size:11px;margin-top:5px}
+.about-back{justify-self:start;background:#18211c;color:#eff8e4}
+@media(max-width:850px){
+ .sidebar{display:none}
+ main{padding:22px 16px calc(104px + env(safe-area-inset-bottom))}
+ .hero{border-radius:24px;padding:24px;min-height:220px}
+ .stats .stat{border-radius:19px}
+ .about-hero{padding:26px 22px;border-radius:24px}
+ .about-details{grid-template-columns:1fr}
+ .about-detail{padding:15px}
+ .creator-card{padding:23px 18px}
+ .about-back{width:100%;justify-content:center}
+ .mobile-nav{padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+}
+@media(max-width:430px){
+ .top{align-items:flex-start;gap:10px}.top>div:last-child{max-width:58%;justify-content:flex-end}
+ .hero{padding:22px}.hero-actions{gap:8px}.hero-actions .btn{padding:11px 13px;font-size:13px}
+ .about-hero p{font-size:13px}
+}
+
 </style>
 </head>
 <body>
@@ -34,10 +106,10 @@ main{padding:34px clamp(20px,4vw,58px);max-width:1500px;width:100%;margin:auto}.
     <button data-page="insight"><span>▥</span> Insight</button>
     <button data-page="plans"><span>◷</span> Rencana Setoran</button>
   </nav>
-  <div class="side-note"><b>Rencanakan hari ini.</b><br>Setiap rupiah yang disisihkan membawa kamu lebih dekat ke tujuan.</div><div class="about-note">TABUNGANKU v2.1<br>Created by Dedi Hermans</div>
+  <div class="side-note"><b>Rencanakan hari ini.</b><br>Setiap rupiah yang disisihkan membawa kamu lebih dekat ke tujuan.</div>
 </aside>
 <main>
-  <header class="top"><div><div class="eyebrow" id="today"></div><h1 id="greeting">Halo, Dedi 👋</h1></div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span id="cloudStatus" style="font-size:11px;color:#718096;background:#eef2f4;padding:8px 10px;border-radius:20px">● Lokal</span><button class="btn soft" style="font-size:12px;padding:9px 11px" onclick="exportBackup()">↓ Backup</button><button class="btn soft" style="font-size:12px;padding:9px 11px" onclick="document.getElementById('restoreFile').click()">↑ Pulihkan</button><input id="restoreFile" type="file" accept="application/json,.json" hidden onchange="importBackup(event)"><div class="avatar">D</div></div></header>
+  <header class="top"><div><div class="eyebrow" id="today"></div><h1 id="greeting">Halo, Dedi 👋</h1></div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span id="cloudStatus" style="font-size:11px;color:#718096;background:#eef2f4;padding:8px 10px;border-radius:20px">● Lokal</span><button class="btn soft" style="font-size:12px;padding:9px 11px" onclick="exportBackup()">↓ Backup</button><button class="btn soft" style="font-size:12px;padding:9px 11px" onclick="document.getElementById('restoreFile').click()">↑ Pulihkan</button><input id="restoreFile" type="file" accept="application/json,.json" hidden onchange="importBackup(event)"><button class="avatar" type="button" aria-label="Tentang TABUNGANKU" title="Tentang TABUNGANKU" onclick='showPage("about")'>D</button></div></header>
 
   <section class="page active" id="page-home">
     <div class="grid">
@@ -74,6 +146,32 @@ main{padding:34px clamp(20px,4vw,58px);max-width:1500px;width:100%;margin:auto}.
   <section class="page" id="page-plans">
     <div class="toolbar"><div><div class="eyebrow">KONSISTENSI KECIL, HASIL BESAR</div><h2>Rencana setoran</h2></div><button class="btn primary" onclick="openGoal()">＋ Tambah target</button></div>
     <div class="panel activity" id="plansList"></div>
+  </section>
+
+  <section class="page about-page" id="page-about">
+    <div class="about-shell">
+      <div class="about-hero">
+        <div class="about-logo"><img src="icon-192.png" alt="Logo TABUNGANKU"></div>
+        <span class="about-kicker">PERSONAL SAVINGS MANAGEMENT</span>
+        <h2>Tentang TABUNGANKU</h2>
+        <p>Ruang sederhana untuk merencanakan tujuan, membangun kebiasaan menabung, dan melihat setiap langkah finansial dengan lebih terarah.</p>
+        <span class="version-pill">VERSION 2.2</span>
+      </div>
+      <div class="about-details">
+        <div class="about-detail"><span class="about-detail-icon">◈</span><div><b>Kelola tujuan</b><small>Buat dan pantau berbagai tujuan tabungan dalam satu tempat.</small></div></div>
+        <div class="about-detail"><span class="about-detail-icon">↗</span><div><b>Pantau progres</b><small>Lihat perkembangan saldo, aktivitas, dan rencana setoran.</small></div></div>
+        <div class="about-detail"><span class="about-detail-icon">☁</span><div><b>Data tersinkron</b><small>Dukungan sinkronisasi cloud, backup, dan pemulihan data.</small></div></div>
+      </div>
+      <div class="creator-card">
+        <span class="creator-label">DESIGNED & DEVELOPED BY</span>
+        <h3>Dedi Hermans</h3>
+        <p>Created with care for a more intentional saving habit.</p>
+        <div class="creator-divider"></div>
+        <span class="creator-app">TABUNGANKU <b>v2.2</b></span>
+        <span class="creator-tagline">Personal Savings Management App</span>
+      </div>
+      <button class="btn about-back" type="button" onclick="showPage('home')">← Kembali ke Beranda</button>
+    </div>
   </section>
 </main>
 </div>
@@ -113,7 +211,7 @@ document.getElementById('plansList').innerHTML=goals.filter(g=>!g.archived).map(
 document.getElementById('composition').innerHTML=goals.filter(g=>!g.archived).map(g=>`<div style="margin:12px 0"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px"><span>${g.icon} ${safe(g.name)}</span><b>${fmt(g.balance)}</b></div><div class="bar"><i style="width:${total?g.balance/total*100:0}%"></i></div></div>`).join('');
 document.getElementById('progressBars').innerHTML=goals.filter(g=>!g.archived).map(g=>`<div style="height:${Math.max(8,progress(g))}%;"><span>${safe(g.name.split(' ')[0])}</span></div>`).join('');
 }
-function showPage(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+p).classList.add('active');document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===p));}
+function showPage(p){const target=document.getElementById('page-'+p);if(!target)return;document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));target.classList.add('active');document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===p));if(p==='about'){document.querySelector('.top h1').textContent='Tentang TABUNGANKU';}else if(document.querySelector('.top h1')){document.querySelector('.top h1').textContent='Halo, Dedi 👋';}window.scrollTo({top:0,behavior:'smooth'});}
 document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
 document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));render()}));
 function openModal(content){document.getElementById('modal').innerHTML=content;document.getElementById('modalBack').classList.add('show')}
