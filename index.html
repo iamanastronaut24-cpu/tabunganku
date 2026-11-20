@@ -83,19 +83,9 @@ main{padding:34px clamp(20px,4vw,58px);max-width:1500px;width:100%;margin:auto}.
 <script>
 const fmt=n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(Number(n)||0);
 const today=new Date();document.getElementById('today').textContent=today.toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-const seedGoals=[
-{id:1,name:'Menikah',icon:'💍',color:'#f4eee6',target:100000000,balance:44043317,date:'2026-11-30',monthly:5000000,term:'medium',note:'Lamaran, mahar, dan resepsi'},
-{id:2,name:'DP Rumah',icon:'🏡',color:'#e8f4ec',target:300000000,balance:0,date:'2028-11-30',monthly:5000000,term:'long',note:'Dana uang muka rumah'},
-{id:3,name:'Liburan',icon:'✈️',color:'#eaf2fb',target:15000000,balance:3500000,date:'2027-06-30',monthly:1000000,term:'short',note:'Perjalanan dan pengalaman baru'},
-{id:4,name:'Kesehatan & Fitness',icon:'🏋️',color:'#fbeeee',target:5000000,balance:1200000,date:'2027-03-30',monthly:500000,term:'short',note:'Gym, olahraga, dan kesehatan'},
-{id:5,name:'Pendidikan (S2)',icon:'🎓',color:'#f1eafa',target:150000000,balance:10000000,date:'2029-12-30',monthly:2500000,term:'long',note:'Kuliah dan pengembangan diri'}
-];
-let goals=JSON.parse(localStorage.getItem('tabunganku_goals')||'null')||seedGoals;
-let txs=JSON.parse(localStorage.getItem('tabunganku_txs')||'null')||[
-{id:1,goalId:1,type:'deposit',amount:5000000,date:'2026-10-02',note:'Setoran bulanan'},
-{id:2,goalId:1,type:'deposit',amount:5000000,date:'2026-09-01',note:'Setoran bulanan'},
-{id:3,goalId:1,type:'deposit',amount:5000000,date:'2026-08-01',note:'Setoran bulanan'}
-];
+// TABUNGANKU dimulai dari kondisi kosong. Pengguna membuat tujuan dan transaksi sendiri.
+let goals=JSON.parse(localStorage.getItem('tabunganku_goals')||'null')||[];
+let txs=JSON.parse(localStorage.getItem('tabunganku_txs')||'null')||[];
 let filter='all';
 function save(){localStorage.setItem('tabunganku_goals',JSON.stringify(goals));localStorage.setItem('tabunganku_txs',JSON.stringify(txs))}
 function progress(g){return g.target?Math.min(100,Math.round(g.balance/g.target*100)):0}
@@ -105,7 +95,7 @@ function txRow(t){let g=goals.find(x=>x.id===t.goalId);let plus=t.type==='deposi
 function render(){
 let total=goals.reduce((a,g)=>a+g.balance,0),target=goals.reduce((a,g)=>a+g.target,0),avg=goals.length?Math.round(goals.reduce((a,g)=>a+progress(g),0)/goals.length):0;
 document.getElementById('totalBalance').textContent=fmt(total);document.getElementById('targetTotal').textContent=fmt(target);document.getElementById('goalCount').textContent=goals.length;document.getElementById('avgProgress').textContent=avg+'%';document.getElementById('insightBalance').textContent=fmt(total);document.getElementById('txCount').textContent=txs.length;document.getElementById('completedCount').textContent=goals.filter(g=>g.balance>=g.target&&g.target>0).length;
-let month= new Date().toISOString().slice(0,7),growth=txs.filter(t=>t.type==='deposit'&&t.date.startsWith(month)).reduce((a,t)=>a+t.amount,0);document.getElementById('monthGrowth').textContent='↗ '+fmt(growth)+' setoran tercatat bulan ini';
+let month= new Date().toISOString().slice(0,7),growth=txs.filter(t=>t.type==='deposit'&&t.date.startsWith(month)).reduce((a,t)=>a+t.amount,0);document.getElementById('monthGrowth').textContent=growth>0?'↗ '+fmt(growth)+' setoran tercatat bulan ini':'Belum ada setoran bulan ini';
 document.getElementById('homeGoals').innerHTML=goals.slice(0,4).map(goalCard).join('')||'<div class="empty">Belum ada tabungan. Buat tujuan pertamamu!</div>';
 document.getElementById('recentActivity').innerHTML=txs.slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,5).map(txRow).join('')||'<div class="empty">Belum ada aktivitas.</div>';
 let shown=goals.filter(g=>filter==='all'||g.term===filter);
