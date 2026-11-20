@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabunganku | Personal Savings</title>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#17232e"><link rel="icon" href="icon.svg" type="image/svg+xml">
+<style>
+:root{--ink:#17212b;--muted:#718096;--line:#e8edf1;--bg:#f4f6f8;--green:#239b69;--green2:#dff4e9;--card:#fff;--shadow:0 12px 35px #1c2b3a0b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input,select{font:inherit}button{cursor:pointer;border:0}.app{display:grid;grid-template-columns:245px 1fr;min-height:100vh}
+.sidebar{background:#fff;border-right:1px solid var(--line);padding:28px 18px;display:flex;flex-direction:column;gap:30px}.brand{font-size:21px;font-weight:800;display:flex;align-items:center;gap:10px;padding:0 10px}.brandmark{width:35px;height:35px;border-radius:12px;background:#17212b;color:#fff;display:grid;place-items:center;font-size:20px}
+.nav{display:grid;gap:7px}.nav button{background:transparent;color:#718096;text-align:left;padding:13px 14px;border-radius:12px;font-weight:600}.nav button.active,.nav button:hover{background:#edf7f2;color:#178052}.nav span{display:inline-block;width:28px}.side-note{margin-top:auto;background:#f5f8f6;border-radius:16px;padding:16px;color:#617168;font-size:12px;line-height:1.5}
+main{padding:34px clamp(20px,4vw,58px);max-width:1500px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.eyebrow{color:var(--muted);font-size:13px}.top h1{font-size:27px;margin:4px 0 0;letter-spacing:-.7px}.avatar{width:42px;height:42px;border-radius:50%;background:#e7eee9;display:grid;place-items:center;font-weight:800}
+.grid{display:grid;grid-template-columns:1.5fr 1fr;gap:18px}.panel,.stat,.goal{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+.hero{background:linear-gradient(120deg,#18232e,#2d3b46);color:#fff;padding:26px 28px;min-height:205px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:240px;height:240px;border:1px solid #ffffff20;border-radius:50%;right:-45px;top:-90px;box-shadow:0 0 0 28px #ffffff08,0 0 0 58px #ffffff06}.hero .eyebrow{color:#c3cbd1}.balance{font-size:clamp(30px,4vw,42px);font-weight:800;letter-spacing:-1.5px;margin:12px 0}.growth{color:#7ce0ad;font-size:13px}.hero-actions{display:flex;gap:10px;margin-top:23px;position:relative;z-index:1}.btn{padding:11px 16px;border-radius:11px;font-weight:700;background:#fff;color:#18232e}.btn.primary{background:var(--green);color:#fff}.btn.soft{background:#edf2ef;color:#264536}.btn.ghost{background:#ffffff1b;color:#fff;border:1px solid #ffffff2a}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat{padding:18px}.stat small{color:var(--muted);display:block;margin-bottom:9px}.stat strong{font-size:21px;letter-spacing:-.5px}.section-head{display:flex;justify-content:space-between;align-items:center;margin:28px 0 14px}.section-head h2{font-size:18px;margin:0}.link{background:none;color:var(--green);font-weight:700}
+.goals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.goal{padding:18px;min-width:0}.goal-top{display:flex;justify-content:space-between;align-items:flex-start}.goal-icon{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;font-size:21px;background:#eef5f1}.percent{font-size:13px;font-weight:800;color:var(--green)}.goal h3{margin:13px 0 4px;font-size:16px}.goal .sub{font-size:12px;color:var(--muted)}.goal-amount{display:flex;justify-content:space-between;gap:8px;margin:15px 0 9px;font-size:13px;font-weight:700}.bar{height:8px;background:#edf0f2;border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,#34b77e,#1d8d5e);border-radius:20px}.activity{padding:5px 20px}.tx{display:flex;align-items:center;gap:12px;padding:15px 0;border-bottom:1px solid var(--line)}.tx:last-child{border:0}.txicon{width:37px;height:37px;border-radius:50%;display:grid;place-items:center;background:#e4f5eb;color:#188653}.txmeta{flex:1;min-width:0}.txmeta b{display:block;font-size:13px}.txmeta small{color:var(--muted);font-size:11px}.amount{font-size:13px;font-weight:800;color:#16804f}.amount.minus{color:#c45a53}
+.page{display:none}.page.active{display:block}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:8px 0 20px}.toolbar h2{margin:0;font-size:22px}.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:17px}.chip{background:#fff;border:1px solid var(--line);border-radius:30px;padding:8px 13px;color:#65717d;font-size:12px}.chip.active{background:#1b2731;color:#fff;border-color:#1b2731}
+.table{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.table-row{display:grid;grid-template-columns:1.4fr 1fr 1fr 90px;align-items:center;gap:12px;padding:15px 18px;border-bottom:1px solid var(--line);font-size:13px}.table-row:last-child{border:0}.table-row.head{background:#f9fafb;color:var(--muted);font-size:11px;font-weight:700}.row-name{display:flex;align-items:center;gap:10px;font-weight:700}.row-name .goal-icon{width:36px;height:36px;font-size:17px}
+.insight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.insight-card{padding:22px}.insight-card h3{margin:0 0 10px;font-size:14px}.bars{display:flex;align-items:end;gap:10px;height:130px;padding-top:10px}.bars div{flex:1;background:#ccebdc;border-radius:7px 7px 2px 2px;position:relative;min-height:8px}.bars span{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--muted)}
+.modal-back{position:fixed;inset:0;background:#111a22a6;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal-back.show{display:flex}.modal{width:min(460px,100%);background:#fff;border-radius:22px;padding:24px;box-shadow:0 20px 70px #0003}.modal h2{margin:0 0 18px}.field{display:grid;gap:6px;margin:13px 0}.field label{font-size:12px;color:#65717d;font-weight:700}.field input,.field select{border:1px solid #dfe5e8;border-radius:10px;padding:12px;background:#fff;outline:none}.field input:focus,.field select:focus{border-color:var(--green)}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}.empty{padding:40px;text-align:center;color:var(--muted)}
+.mobile-nav{display:none}
+@media(max-width:850px){.app{grid-template-columns:1fr}.sidebar{display:none}main{padding:22px 16px 90px}.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.stats .stat:last-child{grid-column:span 2}.goals{grid-template-columns:1fr}.table-row{grid-template-columns:1.3fr 1fr 70px}.table-row>*:nth-child(3){display:none}.table-row.head>*:nth-child(3){display:none}.mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);justify-content:space-around;padding:10px 4px calc(10px + env(safe-area-inset-bottom));z-index:5}.mobile-nav button{background:none;color:#78838d;font-size:10px;display:grid;gap:3px;justify-items:center}.mobile-nav button.active{color:var(--green);font-weight:800}.mobile-nav b{font-size:18px}.top h1{font-size:23px}}
+@media(max-width:430px){.hero{padding:22px}.hero-actions{flex-wrap:wrap}.stats{gap:8px}.stat{padding:14px}.stat strong{font-size:18px}.toolbar{align-items:flex-start}.table-row{padding:13px 10px;gap:7px}.table-row.head{padding:11px 10px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="brandmark">◈</div> Tabunganku</div>
+  <nav class="nav">
+    <button class="active" data-page="home"><span>⌂</span> Beranda</button>
+    <button data-page="savings"><span>◈</span> Tabungan</button>
+    <button data-page="insight"><span>▥</span> Insight</button>
+    <button data-page="plans"><span>◷</span> Rencana Setoran</button>
+  </nav>
+  <div class="side-note"><b>Rencanakan hari ini.</b><br>Setiap rupiah yang disisihkan membawa kamu lebih dekat ke tujuan.</div>
+</aside>
+<main>
+  <header class="top"><div><div class="eyebrow" id="today"></div><h1 id="greeting">Halo, Dedi 👋</h1></div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><button class="btn soft" style="font-size:12px;padding:9px 11px" onclick="exportBackup()">↓ Backup</button><button class="btn soft" style="font-size:12px;padding:9px 11px" onclick="document.getElementById('restoreFile').click()">↑ Pulihkan</button><input id="restoreFile" type="file" accept="application/json,.json" hidden onchange="importBackup(event)"><div class="avatar">D</div></div></header>
+
+  <section class="page active" id="page-home">
+    <div class="grid">
+      <div class="hero">
+        <div class="eyebrow">TOTAL SELURUH TABUNGAN</div>
+        <div class="balance" id="totalBalance">Rp0</div>
+        <div class="growth" id="monthGrowth">↗ Mulai langkah menabungmu hari ini</div>
+        <div class="hero-actions"><button class="btn primary" onclick="openTransaction('deposit')">＋ Setor dana</button><button class="btn ghost" onclick="openTransaction('withdraw')">− Tarik dana</button><button class="btn ghost" onclick="openTransaction('transfer')">⇄ Transfer</button></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><small>Jumlah tujuan</small><strong id="goalCount">0</strong></div>
+        <div class="stat"><small>Target keseluruhan</small><strong id="targetTotal">Rp0</strong></div>
+        <div class="stat"><small>Rata-rata progres</small><strong id="avgProgress">0%</strong></div>
+      </div>
+    </div>
+    <div class="section-head"><h2>Progress tabungan</h2><button class="link" onclick="showPage('savings')">Lihat semua →</button></div>
+    <div class="goals" id="homeGoals"></div>
+    <div class="section-head"><h2>Aktivitas terbaru</h2><button class="link" onclick="showPage('savings')">Riwayat →</button></div>
+    <div class="panel activity" id="recentActivity"></div>
+  </section>
+
+  <section class="page" id="page-savings">
+    <div class="toolbar"><div><div class="eyebrow">KELOLA TUJUAN FINANSIAL</div><h2>Tabungan saya</h2></div><button class="btn primary" onclick="openGoal()">＋ Buat tabungan</button></div>
+    <div class="filters"><button class="chip active" data-filter="all">Semua</button><button class="chip" data-filter="short">Jangka pendek</button><button class="chip" data-filter="medium">Jangka menengah</button><button class="chip" data-filter="long">Jangka panjang</button></div>
+    <div class="table" id="savingsTable"></div>
+  </section>
+
+  <section class="page" id="page-insight">
+    <div class="toolbar"><div><div class="eyebrow">RINGKASAN KEUANGAN</div><h2>Insight tabungan</h2></div></div>
+    <div class="stats" style="margin-bottom:16px"><div class="stat"><small>Total saldo</small><strong id="insightBalance">Rp0</strong></div><div class="stat"><small>Total transaksi</small><strong id="txCount">0</strong></div><div class="stat"><small>Tujuan tercapai</small><strong id="completedCount">0</strong></div></div>
+    <div class="insight-grid"><div class="panel insight-card"><h3>Komposisi saldo per tujuan</h3><div id="composition"></div></div><div class="panel insight-card"><h3>Progres tujuan</h3><div class="bars" id="progressBars"></div></div></div>
+  </section>
+
+  <section class="page" id="page-plans">
+    <div class="toolbar"><div><div class="eyebrow">KONSISTENSI KECIL, HASIL BESAR</div><h2>Rencana setoran</h2></div><button class="btn primary" onclick="openGoal()">＋ Tambah target</button></div>
+    <div class="panel activity" id="plansList"></div>
+  </section>
+</main>
+</div>
+<nav class="mobile-nav"><button class="active" data-page="home"><b>⌂</b>Beranda</button><button data-page="savings"><b>◈</b>Tabungan</button><button data-page="insight"><b>▥</b>Insight</button><button data-page="plans"><b>◷</b>Rencana</button></nav>
+
+<div class="modal-back" id="modalBack" onclick="if(event.target===this)closeModal()"><div class="modal" id="modal"></div></div>
+<script>
+const fmt=n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(Number(n)||0);
+const today=new Date();document.getElementById('today').textContent=today.toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+const seedGoals=[
+{id:1,name:'Menikah',icon:'💍',color:'#f4eee6',target:100000000,balance:44043317,date:'2026-11-30',monthly:5000000,term:'medium',note:'Lamaran, mahar, dan resepsi'},
+{id:2,name:'DP Rumah',icon:'🏡',color:'#e8f4ec',target:300000000,balance:0,date:'2028-11-30',monthly:5000000,term:'long',note:'Dana uang muka rumah'},
+{id:3,name:'Liburan',icon:'✈️',color:'#eaf2fb',target:15000000,balance:3500000,date:'2027-06-30',monthly:1000000,term:'short',note:'Perjalanan dan pengalaman baru'},
+{id:4,name:'Kesehatan & Fitness',icon:'🏋️',color:'#fbeeee',target:5000000,balance:1200000,date:'2027-03-30',monthly:500000,term:'short',note:'Gym, olahraga, dan kesehatan'},
+{id:5,name:'Pendidikan (S2)',icon:'🎓',color:'#f1eafa',target:150000000,balance:10000000,date:'2029-12-30',monthly:2500000,term:'long',note:'Kuliah dan pengembangan diri'}
+];
+let goals=JSON.parse(localStorage.getItem('tabunganku_goals')||'null')||seedGoals;
+let txs=JSON.parse(localStorage.getItem('tabunganku_txs')||'null')||[
+{id:1,goalId:1,type:'deposit',amount:5000000,date:'2026-10-02',note:'Setoran bulanan'},
+{id:2,goalId:1,type:'deposit',amount:5000000,date:'2026-09-01',note:'Setoran bulanan'},
+{id:3,goalId:1,type:'deposit',amount:5000000,date:'2026-08-01',note:'Setoran bulanan'}
+];
+let filter='all';
+function save(){localStorage.setItem('tabunganku_goals',JSON.stringify(goals));localStorage.setItem('tabunganku_txs',JSON.stringify(txs))}
+function progress(g){return g.target?Math.min(100,Math.round(g.balance/g.target*100)):0}
+function safe(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function goalCard(g){return `<article class="goal"><div class="goal-top"><div class="goal-icon" style="background:${g.color}">${g.icon}</div><span class="percent">${progress(g)}%</span></div><h3>${safe(g.name)}</h3><div class="sub">${fmt(g.balance)} dari ${fmt(g.target)}</div><div class="goal-amount"><span>${fmt(g.balance)}</span><span>${fmt(g.target)}</span></div><div class="bar"><i style="width:${progress(g)}%"></i></div><div style="display:flex;justify-content:space-between;margin-top:13px"><button class="link" onclick="openTransaction('deposit',${g.id})">＋ Setor</button><button class="link" onclick="openTransaction('withdraw',${g.id})">Detail / tarik →</button></div></article>`}
+function txRow(t){let g=goals.find(x=>x.id===t.goalId);let plus=t.type==='deposit';return `<div class="tx"><div class="txicon">${plus?'＋':t.type==='transfer'?'⇄':'−'}</div><div class="txmeta"><b>${safe(t.note|| (plus?'Setoran tabungan':'Penarikan dana'))}</b><small>${safe(g?.name||'Tabungan')} · ${new Date(t.date+'T00:00:00').toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'})}</small></div><div class="amount ${plus?'':'minus'}">${plus?'+':'−'}${fmt(t.amount)}</div></div>`}
+function render(){
+let total=goals.reduce((a,g)=>a+g.balance,0),target=goals.reduce((a,g)=>a+g.target,0),avg=goals.length?Math.round(goals.reduce((a,g)=>a+progress(g),0)/goals.length):0;
+document.getElementById('totalBalance').textContent=fmt(total);document.getElementById('targetTotal').textContent=fmt(target);document.getElementById('goalCount').textContent=goals.length;document.getElementById('avgProgress').textContent=avg+'%';document.getElementById('insightBalance').textContent=fmt(total);document.getElementById('txCount').textContent=txs.length;document.getElementById('completedCount').textContent=goals.filter(g=>g.balance>=g.target&&g.target>0).length;
+let month= new Date().toISOString().slice(0,7),growth=txs.filter(t=>t.type==='deposit'&&t.date.startsWith(month)).reduce((a,t)=>a+t.amount,0);document.getElementById('monthGrowth').textContent='↗ '+fmt(growth)+' setoran tercatat bulan ini';
+document.getElementById('homeGoals').innerHTML=goals.slice(0,4).map(goalCard).join('')||'<div class="empty">Belum ada tabungan. Buat tujuan pertamamu!</div>';
+document.getElementById('recentActivity').innerHTML=txs.slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,5).map(txRow).join('')||'<div class="empty">Belum ada aktivitas.</div>';
+let shown=goals.filter(g=>filter==='all'||g.term===filter);
+document.getElementById('savingsTable').innerHTML=`<div class="table-row head"><div>Nama tabungan</div><div>Saldo / Target</div><div>Progres</div><div>Aksi</div></div>`+(shown.map(g=>`<div class="table-row"><div class="row-name"><div class="goal-icon" style="background:${g.color}">${g.icon}</div>${safe(g.name)}</div><div><b>${fmt(g.balance)}</b><div class="sub">dari ${fmt(g.target)}</div></div><div><b>${progress(g)}%</b><div class="bar" style="margin-top:6px"><i style="width:${progress(g)}%"></i></div></div><div><button class="link" onclick="openTransaction('deposit',${g.id})">Setor +</button></div></div>`).join('')||'<div class="empty">Tidak ada tabungan di kategori ini.</div>');
+document.getElementById('plansList').innerHTML=goals.map(g=>`<div class="tx"><div class="txicon">◷</div><div class="txmeta"><b>${safe(g.name)}</b><small>Target ${new Date(g.date+'T00:00:00').toLocaleDateString('id-ID',{month:'long',year:'numeric'})} · Rencana ${fmt(g.monthly)}/bulan</small><div class="bar" style="margin-top:8px"><i style="width:${progress(g)}%"></i></div></div><b class="percent">${progress(g)}%</b></div>`).join('')||'<div class="empty">Belum ada rencana.</div>';
+document.getElementById('composition').innerHTML=goals.map(g=>`<div style="margin:12px 0"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px"><span>${g.icon} ${safe(g.name)}</span><b>${fmt(g.balance)}</b></div><div class="bar"><i style="width:${total?g.balance/total*100:0}%"></i></div></div>`).join('');
+document.getElementById('progressBars').innerHTML=goals.map(g=>`<div style="height:${Math.max(8,progress(g))}%;"><span>${safe(g.name.split(' ')[0])}</span></div>`).join('');
+}
+function showPage(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+p).classList.add('active');document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===p));}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));render()}));
+function openModal(content){document.getElementById('modal').innerHTML=content;document.getElementById('modalBack').classList.add('show')}
+function closeModal(){document.getElementById('modalBack').classList.remove('show')}
+function openGoal(){openModal(`<h2>Buat tabungan baru</h2><form id="goalForm"><div class="field"><label>Nama tabungan</label><input name="name" required placeholder="Contoh: Beli kendaraan"></div><div class="field"><label>Ikon</label><select name="icon"><option>🎯</option><option>💍</option><option>🏡</option><option>✈️</option><option>🎓</option><option>🏋️</option><option>🛟</option><option>🚗</option></select></div><div class="field"><label>Target nominal (Rp)</label><input name="target" type="number" min="1" required placeholder="50000000"></div><div class="field"><label>Target waktu</label><input name="date" type="date" required></div><div class="field"><label>Rencana setoran per bulan (Rp)</label><input name="monthly" type="number" min="0" value="0"></div><div class="field"><label>Periode</label><select name="term"><option value="short">Jangka pendek</option><option value="medium">Jangka menengah</option><option value="long">Jangka panjang</option></select></div><div class="field"><label>Catatan (opsional)</label><input name="note" placeholder="Tujuan tabungan"></div><div class="modal-actions"><button type="button" class="btn soft" onclick="closeModal()">Batal</button><button class="btn primary">Simpan tabungan</button></div></form>`);
+document.getElementById('goalForm').onsubmit=e=>{e.preventDefault();let d=Object.fromEntries(new FormData(e.target));goals.push({id:Date.now(),name:d.name,icon:d.icon,color:'#edf4ef',target:+d.target,balance:0,date:d.date,monthly:+d.monthly,term:d.term,note:d.note});save();closeModal();render()}}
+function openTransaction(type,preselect){
+let title=type==='deposit'?'Setor tabungan':type==='withdraw'?'Tarik dana':'Transfer antar-tabungan';
+let opts=goals.map(g=>`<option value="${g.id}" ${g.id===preselect?'selected':''}>${safe(g.name)} · ${fmt(g.balance)}</option>`).join('');
+openModal(`<h2>${title}</h2><form id="txForm"><div class="field"><label>${type==='transfer'?'Dari tabungan':'Pilih tabungan'}</label><select name="goalId" required>${opts}</select></div>${type==='transfer'?`<div class="field"><label>Ke tabungan</label><select name="toId" required>${goals.map(g=>`<option value="${g.id}">${safe(g.name)}</option>`).join('')}</select></div>`:''}<div class="field"><label>Nominal (Rp)</label><input name="amount" type="number" min="1" required placeholder="500000"></div><div class="field"><label>Tanggal</label><input name="date" type="date" value="${new Date().toISOString().slice(0,10)}" required></div><div class="field"><label>Catatan</label><input name="note" placeholder="${type==='deposit'?'Setoran rutin':'Keterangan transaksi'}"></div><div class="modal-actions"><button type="button" class="btn soft" onclick="closeModal()">Batal</button><button class="btn primary">Simpan transaksi</button></div></form>`);
+document.getElementById('txForm').onsubmit=e=>{e.preventDefault();let d=Object.fromEntries(new FormData(e.target)),g=goals.find(x=>x.id===+d.goalId),amt=+d.amount;if(type==='withdraw'&&amt>g.balance){alert('Saldo tabungan tidak mencukupi.');return}if(type==='transfer'){let to=goals.find(x=>x.id===+d.toId);if(to.id===g.id){alert('Pilih tabungan tujuan yang berbeda.');return}if(amt>g.balance){alert('Saldo tabungan tidak mencukupi.');return}g.balance-=amt;to.balance+=amt;txs.unshift({id:Date.now(),goalId:g.id,type:'withdraw',amount:amt,date:d.date,note:'Transfer ke '+to.name},{id:Date.now()+1,goalId:to.id,type:'deposit',amount:amt,date:d.date,note:'Transfer dari '+g.name})}else{g.balance+=type==='deposit'?amt:-amt;txs.unshift({id:Date.now(),goalId:g.id,type,amount:amt,date:d.date,note:d.note|| (type==='deposit'?'Setoran tabungan':'Penarikan dana')})}save();closeModal();render()}}
+render();
+function exportBackup(){
+  const payload={app:'Tabunganku',version:1,exportedAt:new Date().toISOString(),goals,transactions:txs};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='tabunganku-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(url);
+}
+function importBackup(event){
+  const file=event.target.files?.[0];if(!file)return;
+  const reader=new FileReader();reader.onload=()=>{try{
+    const data=JSON.parse(reader.result);
+    if(data.app!=='Tabunganku'||!Array.isArray(data.goals)||!Array.isArray(data.transactions))throw new Error('Format backup tidak dikenali');
+    if(!confirm('Pulihkan backup? Data tabungan dan transaksi saat ini akan diganti.'))return;
+    goals=data.goals;txs=data.transactions;save();render();alert('Backup berhasil dipulihkan.');
+  }catch(err){alert('Gagal memulihkan backup: '+err.message)}finally{event.target.value=''}};reader.readAsText(file);
+}
+if('serviceWorker' in navigator && location.protocol!=='file:'){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+</script>
+</body></html>
